@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/name-api", {
+mongoose.connect("mongodb://localhost/animeMovies", {
     useNewUrlParser:true,
     useUnifiedTopology:true,
     useFindAndModify:false,

@@ -8,7 +8,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
 require('./config/mongoose.config');
-require('./routes/labelling.route')(app);
+require('./routes/animeMovies.route')(app);
+
 
 
 app.listen (port, () => console.log ('Listen port ' + port ));
