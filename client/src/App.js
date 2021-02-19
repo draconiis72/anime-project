@@ -1,18 +1,18 @@
 import './App.css';
 import {Router} from "@reach/router";
-import LabelOne from "./components/LabelOne";
-import LabelAdd from "./components/LabelAdd";
-import LabelEdit from "./components/LabelEdit";
-import LabelAll from "./components/LabelAll";
+import AnimeMoviesOne from "./components/AnimeMoviesOne";
+import AnimeMoviesAdd from "./components/AnimeMoviesAdd";
+import AnimeMoviesEdit from "./components/AnimeMoviesEdit";
+import AnimeMoviesAll from "./components/AnimeMoviesAll";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <LabelAdd path="/label/new" />
-        <LabelAll path="/" />
-        <LabelEdit path="/label/:labelling_id/edit" />
-        <LabelOne path="/label/:id" />
+        <AnimeMoviesAdd path="/animeMovies/new" />
+        <AnimeMoviesAll path="/" />
+        <AnimeMoviesEdit path="/animeMovies/:animeMovies_id/edit" />
+        <AnimeMoviesOne path="/animeMovies/:id" />
       </Router>
 
     </div>

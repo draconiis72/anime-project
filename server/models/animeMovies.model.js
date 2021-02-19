@@ -9,10 +9,9 @@ const AnimeMoviesSchema = new mongoose.Schema ({
     releaseDate: { type:Date, required:[true]},
     characters: { type:String, required:[true]},
     length: {type: Number, require:true },
-    numberOfLikes: {type:Number},
+    numberOfLikes: {type:Number, default:0 },
     description: {type:String},
     submittedBy: {type:String},
-    admin:{type:Boolean, default:false},
 
 
 }, { timestamps:true });

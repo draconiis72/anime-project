@@ -1,52 +1,41 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {navigate, Link} from '@reach/router';
 
-const LabelEdit = (props) => {
-
-const [title,setTitle]= useState("");
+const AnimeMoviesAdd = (props) => {
+    const [image,setImage]= useState ("");
+    const [title,setTitle]= useState("");
     const [genre,setGenre] = useState ("");
     const [director,setDirector] = useState("");
-    const [date,setDate] = useState("");
-    const [cast,setCast] = useState ("");
+    const [releaseDate,setReleaseDate] = useState("");
+    const [characters,setCharacters] = useState ("");
     const [length,setLength] = useState("");
+    const [numberOfLikes,setNumberOfLikes] = useState("");
+    const [description,setDescription] = useState("");
+    const [submittedBy,setSubmittedBy] = useState("");
     const [errs, setErrs] = useState({});
-
-    useEffect(() => {
-        axios
-        .get("http://localhost:8000/api/label/" + props.labelling_id)
-        .then((res) => {
-            console.log(res.data);
-            setTitle(res.data.title);
-            setGenre(res.data.genre);
-            setDirector(res.data.director);
-            setDate(res.data.date);
-            setCast(res.data.cast);
-            setLength(res.data.length);
-        })    
-        .catch((err) => console.log("Failed to pull label" + err));
-
-    }, []);
-
-    // only axios verb and url id changed from add
 
     const submitForm = (e) => {
         e.preventDefault();
         axios
-            .put("http://localhost:8000/api/label/" + props.labelling_id, {
+            .post("http://localhost:8000/api/animeMovies", {
+                image: image,
                 title: title,
                 genre: genre,
                 director: director,
-                date: date,
-                cast: cast,
-                length: length
+                releaseDate: releaseDate,
+                characters: characters,
+                length: length,
+                numberOfLikes: numberOfLikes,
+                description: description,
+                submittedBy: submittedBy,
             })
             .then((res) => {
                 if (res.data.errors) {
                     setErrs(res.data.errors);
                 }   else {
                     console.log(res.data._id);
-                navigate("/label/" + res.data._id);
+                navigate("/animeMovies/" + res.data._id);
 
                 }
             })
@@ -55,14 +44,24 @@ const [title,setTitle]= useState("");
     }
     return (
         <div>
-            <h2>Edit Label</h2>
+            <h2>Add Anime Movie</h2>
             <form onSubmit={submitForm}>
+                <div>
+                    <label>Image</label>
+                    <input
+                        type="text"
+                        name="image"
+                        onChange={ (e) => setImage(e.target.value)}
+                    />
+                    {errs.image ? (
+                        <span style={{color:"red"}}>{errs.image.message}</span>
+                    ) : null }
+                </div>
                 <div>
                     <label>Title</label>
                     <input
                         type="text"
                         name="title"
-                        value={title}
                         onChange={ (e) => setTitle(e.target.value)}
                     />
                     {errs.title ? (
@@ -71,13 +70,13 @@ const [title,setTitle]= useState("");
                 </div>
                 <div>
                     <label>Genre</label>
-                    <select name="genre" defaultValue={genre} onClick={ (e) => setGenre(e.target.value)}>
+                    <select name="genre" onClick={ (e) => setGenre(e.target.value)}>
                         <option value="Horror">Horror</option>
                         <option value="Sci-fi">Sci-fi</option>
                         <option value="Drama">Drama</option>
                         <option value="Fantasy">Fantasy</option>
                         <option value="Comedy">Comedy</option>
-                        <option value="Anime">Anime</option>
+                        <option value="Adventure">Adventure</option>
                         
                     </select>
                     {errs.genre ? (
@@ -89,7 +88,6 @@ const [title,setTitle]= useState("");
                     <input
                         type="text"
                         name="director"
-                        value={director}
                         onChange={ (e) => setDirector(e.target.value)}
                     />
                     {errs.director ? (
@@ -97,27 +95,25 @@ const [title,setTitle]= useState("");
                     ) : null }
                 </div>
                 <div>
-                    <label>Date</label>
+                    <label>Release Date</label>
                     <input
                         type="text"
-                        name="date"
-                        value={date}
-                        onChange={ (e) => setDate(e.target.value)}
+                        name="releaseDate"
+                        onChange={ (e) => setReleaseDate(e.target.value)}
                     />
-                    {errs.date ? (
-                        <span style={{color:"red"}}>{errs.date.message}</span>
+                    {errs.releaseDate ? (
+                        <span style={{color:"red"}}>{errs.releaseDate.message}</span>
                     ) : null }
                 </div>
                 <div>
-                    <label>Cast</label>
+                    <label>Characters</label>
                     <input
                         type="text"
-                        name="cast"
-                        value={cast}
-                        onChange={ (e) => setCast(e.target.value)}
+                        name="characters"
+                        onChange={ (e) => setCharacters(e.target.value)}
                     />
-                    {errs.cast ? (
-                        <span style={{color:"red"}}>{errs.cast.message}</span>
+                    {errs.characters ? (
+                        <span style={{color:"red"}}>{errs.characters.message}</span>
                     ) : null }
                 </div>
                 <div>
@@ -125,7 +121,6 @@ const [title,setTitle]= useState("");
                     <input
                         type="text"
                         name="length"
-                        value={length}
                         onChange={ (e) => setLength(e.target.value)}
                     />
                     {errs.length ? (
@@ -133,10 +128,21 @@ const [title,setTitle]= useState("");
                     ) : null }
                 </div>
                 <div>
+                    <label>Description</label>
+                    <input
+                        type="text"
+                        name="description"
+                        onChange={ (e) => setDescription(e.target.value)}
+                    />
+                    {errs.description ? (
+                        <span style={{color:"red"}}>{errs.description.message}</span>
+                    ) : null }
+                </div>
+                <div>
                     <Link to="/">
                         <button>Back</button> 
                     </Link>
-                    <button type="submit">Update Label</button>
+                    <button type="submit">Submit Movie</button>
                 </div>
 
             </form>
@@ -144,4 +150,4 @@ const [title,setTitle]= useState("");
     )
 }
 
-export default LabelEdit;
+export default AnimeMoviesAdd;
