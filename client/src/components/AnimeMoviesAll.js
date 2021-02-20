@@ -22,6 +22,19 @@ const AnimeMoviesAll = (props) => {
                 setAllAnimeMovies(allAnimeMovies.filter((animeMovies) => animeMovies._id !== animeMoviesId ));
             })
             .catch((err) => console.log(err));
+
+            
+    }
+    const addLike = (e, animeMoviesId, addedLike) => {
+        axios
+            .put("http://localhost:8000/api/animeMovies/" + animeMoviesId, {
+                numberOfLikes: addedLike + 1
+            })
+            .then((res) => {
+                console.log("1 new like added");
+            })
+            .catch ((err) => console.log(err));
+
     }
     return (
         <div>
@@ -37,7 +50,7 @@ const AnimeMoviesAll = (props) => {
                             <button className="floatBtn" >Edit</button>
                         </Link>
                         <button className = "floatBtn" onClick={ (e) => deleteAnimeMovie(e, animeMovies._id)}>Delete</button>
-                        <button className = "floatBtn" onClick={ (e) => animeMovies.numberOfLikes = animeMovies.numberOfLikes+1}>Likes: {animeMovies.numberOfLikes}</button>
+                        <button className = "floatBtn" onClick={ (e) => addLike(e, animeMovies._id, animeMovies.numberOfLikes)}>Likes: {animeMovies.numberOfLikes}</button>
                     </p>
                 ))
             }
