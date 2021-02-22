@@ -22,7 +22,7 @@ const AnimeMoviesOne = (props) => {
             <p>Release Date: {animeMoviesOne.releaseDate}</p>
             <p>Characters: {animeMoviesOne.characters}</p>
             <p>Length: {animeMoviesOne.length}</p>
-            <p>Number Of Likes: {animeMoviesOne.numberOflikes}</p>
+            <p>Number Of Likes: {animeMoviesOne.numberOfLikes}</p>
             <p>Description: {animeMoviesOne.description}</p>
             <p>Submitted By: {animeMoviesOne.submittedBy}</p>
             <Link to="/animeMoviesListing">

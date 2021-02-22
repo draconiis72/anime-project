@@ -16,10 +16,12 @@ const AnimeMoviesEdit = (props) => {
     const [submittedBy,setSubmittedBy] = useState("");
     const [errs, setErrs] = useState({});
 
-    useEffect(() => {
+    useEffect(() => {            
+        console.log(props.animeMovies_id);
         axios
         .get("http://localhost:8000/api/animeMovies/" + props.animeMovies_id)
         .then((res) => {
+
             console.log(res.data);
             setImage(res.data.image);
             setTitle(res.data.title);

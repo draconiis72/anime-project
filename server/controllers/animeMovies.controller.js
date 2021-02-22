@@ -13,15 +13,15 @@ module.exports = {
             });
     },
 
-    FindallAnimeGenre: (req,res) => {
-        AnimeMovies.find()
-            .sort({title:"ascending"})
-            .then((foundAnimeGenre) => res.json(foundAnimeGenre))
-            .catch((err) => {
-                console.log("Error finding all Anime movies: " + err);
-                res.json(err)
-            });
-    },
+    // FindallAnimeGenre: (req,res) => {
+    //     AnimeMovies.find()
+    //         .sort({numberOfLikes:"ascending"})
+    //         .then((foundAnimeGenre) => res.json(foundAnimeGenre))
+    //         .catch((err) => {
+    //             console.log("Error finding all Anime movies: " + err);
+    //             res.json(err)
+    //         });
+    // },
 
     FindOneAnimeMovie: (req,res)=> {
         AnimeMovies.findById(req.params.id)
