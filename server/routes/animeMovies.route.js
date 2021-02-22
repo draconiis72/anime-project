@@ -7,5 +7,5 @@ module.exports = (app) =>{
     app.post('/api/animeMovies', AnimeController.CreateOneAnimeMovie);
     app.put('/api/animeMovies/:id', AnimeController.UpdateExistingAnimeMovie);
     app.delete('/api/animeMovies/:id', AnimeController.DeleteExistingAnimeMovie);
-    
+    // app.get('/api/animeMovies/:genre', AnimeController.FindAllAnimeGenre);
 }

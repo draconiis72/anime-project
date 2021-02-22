@@ -49,7 +49,7 @@ const AnimeMoviesAll = (props) => {
                             {<img src={animeMovies.image} alt={animeMovies.title} style={{borderRadius:"10px", width:"25%"}}/>}
                         </Link>
                         <span>Submitted By:</span>{animeMovies.submittedBy}
-                        {animeMovies.genre}
+                        <Link to={"/animeMovies/"}>{animeMovies.genre}</Link>
                         <Link to={"/animeMovies/" + animeMovies._id + "/edit"}>
                             <button className="floatBtn" >Edit</button>
                         </Link>

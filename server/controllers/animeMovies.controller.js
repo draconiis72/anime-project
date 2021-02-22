@@ -5,8 +5,18 @@ const AnimeMovies = require('../models/animeMovies.model');
 module.exports = {
     FindallAnimeMovies: (req,res) => {
         AnimeMovies.find()
-            .sort({title:"ascending"})
+            .sort({numberOfLikes:"descending"})
             .then((foundAnimeMovies) => res.json(foundAnimeMovies))
+            .catch((err) => {
+                console.log("Error finding all Anime movies: " + err);
+                res.json(err)
+            });
+    },
+
+    FindallAnimeGenre: (req,res) => {
+        AnimeMovies.find()
+            .sort({title:"ascending"})
+            .then((foundAnimeGenre) => res.json(foundAnimeGenre))
             .catch((err) => {
                 console.log("Error finding all Anime movies: " + err);
                 res.json(err)

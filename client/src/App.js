@@ -4,6 +4,7 @@ import AnimeMoviesOne from "./components/AnimeMoviesOne";
 import AnimeMoviesAdd from "./components/AnimeMoviesAdd";
 import AnimeMoviesEdit from "./components/AnimeMoviesEdit";
 import AnimeMoviesAll from "./components/AnimeMoviesAll";
+import AnimeMoviesGenre from "./components/AnimeMoviesGenre";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <AnimeMoviesAll path="/animeMoviesListing" />
         <AnimeMoviesEdit path="/animeMovies/:animeMovies_id/edit" />
         <AnimeMoviesOne path="/animeMovies/:id" />
+        <AnimeMoviesGenre path="/animeMovies/"/>
       </Router>
 
     </div>
