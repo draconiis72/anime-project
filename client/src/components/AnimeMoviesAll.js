@@ -45,7 +45,11 @@ const AnimeMoviesAll = (props) => {
             {
                 allAnimeMovies.map((animeMovies, index) => (
                     <p key={index}>
-                        <Link to={"/animeMovies/" + animeMovies._id}>{<img src={animeMovies.image} alt={animeMovies.title} style={{borderRadius:"10px", width:"25%"}}/>}</Link>
+                        <Link to={"/animeMovies/" + animeMovies._id}>
+                            {<img src={animeMovies.image} alt={animeMovies.title} style={{borderRadius:"10px", width:"25%"}}/>}
+                        </Link>
+                        <span>Submitted By:</span>{animeMovies.submittedBy}
+                        {animeMovies.genre}
                         <Link to={"/animeMovies/" + animeMovies._id + "/edit"}>
                             <button className="floatBtn" >Edit</button>
                         </Link>
