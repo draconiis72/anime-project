@@ -170,7 +170,7 @@ const AnimeMoviesEdit = (props) => {
                     ) : null }
                 </div>
                 <div>
-                    <Link to="/">
+                    <Link to="/animeMoviesListing">
                         <button>Back</button> 
                     </Link>
                     <button type="submit">Update Anime Movie</button>

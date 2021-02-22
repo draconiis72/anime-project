@@ -25,7 +25,7 @@ const AnimeMoviesOne = (props) => {
             <p>Number Of Likes: {animeMoviesOne.numberOflikes}</p>;
             <p>Description: {animeMoviesOne.description}</p>;
             <p>Submitted By: {animeMoviesOne.submittedBy}</p>;
-            <Link to="/">
+            <Link to="/animeMoviesListing">
                 <button>Back</button>
             </Link>;
             

@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Router>
         <AnimeMoviesAdd path="/animeMovies/new" />
-        <AnimeMoviesAll path="/" />
+        <AnimeMoviesAll path="/animeMoviesListing" />
         <AnimeMoviesEdit path="/animeMovies/:animeMovies_id/edit" />
         <AnimeMoviesOne path="/animeMovies/:id" />
       </Router>
