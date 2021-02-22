@@ -1,0 +1,13 @@
+import React from "react";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
+
+const LogReg = () => {
+    return (
+        <div>
+            <SignIn/>
+            <SignUp/>
+        </div>
+    );
+};
+export default LogReg; 
