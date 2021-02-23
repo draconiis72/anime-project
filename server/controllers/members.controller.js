@@ -1,11 +1,11 @@
 const {Mongoose} = require ('mongoose');
-const MemberProfiles = require('../models/memberProfiles.model');
+const Members = require('../models/members.model');
 
 
 module.exports = {
     FindallMemberProfiles: (req,res) => {
-        MemberProfiles.find()
-            .sort({title:"ascending"})
+        Members.find()
+            .sort({username:"ascending"})
             .then((foundMemberProfiles) => res.json(foundMemberProfiles))
             .catch((err) => {
                 console.log("Error finding all Members: " + err);
@@ -14,7 +14,7 @@ module.exports = {
     },
 
     FindOneMemberProfile: (req,res)=> {
-        MemberProfiles.findById(req.params.id)
+        Members.findById(req.params.id)
             .then((foundOneMemberProfile) => res.json(foundOneMemberProfile))
             .catch((err) => {
                 console.log("Error finding Member Profile: " + err);
@@ -22,8 +22,8 @@ module.exports = {
             });
     },
     CreateOneMemberProfile: (req,res) => {
-        MemberProfiles.findOne({
-            title:req.body.title
+        Members.findOne({
+            username:req.body.username
         })
             .then((existingMemberProfile) => {
                 if (existingMemberProfile) {
@@ -31,7 +31,7 @@ module.exports = {
                     res.json({message: "Member profile already in list"});
                 }
                 else {
-                    MemberProfiles.create(req.body)
+                    Members.create(req.body)
                         .then((newMemberProfile) => res.json(newMemberProfile))
                         .catch((err) => {
                             console.log("Error creating New Member Profile: " + err);
@@ -45,16 +45,16 @@ module.exports = {
             });
 
     },
-    UpdateExistingAnimeMovie: (req,res) => {
-        MemberProfiles.findByIdAndUpdate(req.params.id, req.body, {new:true, runValidators:true})
+    UpdateExistingMember: (req,res) => {
+        Members.findByIdAndUpdate(req.params.id, req.body, {new:true, runValidators:true})
             .then((updatedMemberProfile) => res.json(updatedMemberProfile))
             .catch((err) => {
                 console.log("Error finding that Member profile: " + err);
                 res.json(err)
             });
     },
-    DeleteExistingAnimeMovie: (req,res) => {
-        MemberProfiles.findByIdAndDelete (req.params.id)
+    DeleteExistingMember: (req,res) => {
+        Members.findByIdAndDelete (req.params.id)
             .then((deletedMemberProfile) => res.json (deletedMemberProfile))
             .catch((err) => {
                 console.log("Error Deleting Member Profile: " + err);

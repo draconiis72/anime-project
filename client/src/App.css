@@ -5,6 +5,14 @@
   background-color:blanchedalmond;
   padding: 20px;
 }
+div {  
+  max-width: 900px;
+  margin: auto;
+  border-radius: 6px;
+  background-color:blanchedalmond;
+  padding: 20px;
+
+}
 
 table {
   border-collapse: collapse;
